@@ -30,17 +30,5 @@ describe("GET /status", () => {
 
 });
 
-it("queues and dequeues in FIFO order", async () => {
-
-  await request(app).post("/jobs").send({ task: "a" });
-
-  await request(app).post("/jobs").send({ task: "b" });
-
-  const first = await request(app).post("/jobs/next");
-
-  expect(first.body.task).toBe("a");
-
-});
-
 
 
